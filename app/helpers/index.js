@@ -164,7 +164,7 @@ let createNewRoom = function(roomName) {
   return new Promise(function(resolve, reject) {
     let newChatRoom = new db.roomModel({
       room: roomName,
-      roomID: h.randomHex(),
+      roomID: randomHex(),
       users: []
     });
 
@@ -197,7 +197,7 @@ let getAllRooms = function() {
     })
   });
 }
-// 
+//
 // let updateRooms = function
 
 module.exports = {
