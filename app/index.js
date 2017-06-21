@@ -5,7 +5,7 @@ const config = require('./config');
 const redis = require('redis').createClient;
 const adapter = require('socket.io-redis');
 const h = require('./helpers');
-const logger = require('./logger');
+// const logger = require('./logger');
 
 require('./auth')();
 // let chatrooms;
@@ -46,5 +46,5 @@ module.exports = {
   router: require('./routes')(),
   session: require('./session'),
   ioServer,
-  logger
+  logger: require('./logger')
 }
