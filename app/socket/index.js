@@ -25,6 +25,8 @@
      socket.on('createNewRoom', newRoomInput => {
        // Check to see if a room with the same title exists  or newRoomInput
        // if not, create one and broadcast to everyone
+       console.log(allrooms);
+       console.log(newRoomInput);
        if (!h.findRoomByName(allrooms, newRoomInput)) {
         //  allrooms.push({
         //    room: newRoomInput,
