@@ -90,3 +90,4 @@
 {"level":"info","message":"::1 - - [21/Jun/2017:15:50:20 +0000] \"GET / HTTP/1.1\" 200 619 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36\"\n","timestamp":"2017-06-21T15:50:20.857Z"}
 {"level":"info","message":"::1 - - [21/Jun/2017:15:50:20 +0000] \"GET /favicon.ico HTTP/1.1\" 404 689 \"http://localhost:3000/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36\"\n","timestamp":"2017-06-21T15:50:20.989Z"}
 {"level":"info","message":"::1 - - [21/Jun/2017:15:50:22 +0000] \"GET /auth/facebook HTTP/1.1\" 302 0 \"http://localhost:3000/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36\"\n","timestamp":"2017-06-21T15:50:22.259Z"}
+{"level":"error","message":"Error - getAllRooms ","timestamp":"2017-06-21T15:52:49.719Z"}

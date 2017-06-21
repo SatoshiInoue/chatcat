@@ -29,5 +29,6 @@ let roomModel = Mongoose.model('chatRoom', chatRoom);
 
 module.exports = {
   Mongoose,
-  userModel
+  userModel,
+  roomModel
 }
