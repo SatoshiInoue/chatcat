@@ -17,6 +17,16 @@ const chatUser = new Mongoose.Schema({
 //Turn the schema into a usable model
 let userModel = Mongoose.model('chatUser', chatUser);
 
+//Create a schema that defines the structure for storing the user data
+const chatRoom = new Mongoose.Schema({
+  room: String,
+  roomID: String,
+  users: []
+});
+
+//Turn the schema into a usable model
+let roomModel = Mongoose.model('chatRoom', chatRoom);
+
 module.exports = {
   Mongoose,
   userModel

@@ -4,12 +4,24 @@
 const config = require('./config');
 const redis = require('redis').createClient;
 const adapter = require('socket.io-redis');
+const h = require('./helpers');
+const logger = require('./logger');
 
 require('./auth')();
+let chatrooms;
+h.getAllRooms()
+.then(function(results) {
+  chatrooms = results;
+})
+.catch(function(error) {
+  chatrooms = [];
+  logger.log('error', "Error - getAllRooms " + error);
+});
 
 // Create an IO Server instanceof
 let ioServer = (app) => {
-  app.locals.chatrooms = [];
+  app.locals.chatrooms = chatrooms;
+
   const server = require('http').Server(app);
   const io = require('socket.io')(server);
   io.set('transports', ['websocket']);
@@ -34,5 +46,5 @@ module.exports = {
   router: require('./routes')(),
   session: require('./session'),
   ioServer,
-  logger: require('./logger')
+  logger
 }

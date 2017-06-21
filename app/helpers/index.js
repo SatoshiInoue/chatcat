@@ -27,7 +27,7 @@ let route = (routes) => {
 }
 
 // Find a single user based on a key
-let findOne = function(profileID) {
+let findUser = function(profileID) {
   return db.userModel.findOne({
     'profileId': profileID
   });
@@ -52,8 +52,8 @@ let createNewUser = function(profile) {
     })
   })
 }
-
-let findById = function(id) {
+// Find user by ID
+let findUserById = function(id) {
   return new Promise((resolve, reject) => {
     db.userModel.findById(id, (error, user) => {
       if (error) {
@@ -157,15 +157,61 @@ let removeUserFromRoom = (allrooms, socket) => {
   }
 }
 
+/* db version of rooms */
+
+// Create a new user and returns that instanceof
+let createNewRoom = function(roomName) {
+  return new Promise(function(resolve, reject) {
+    let newChatRoom = new db.roomModel({
+      room: roomName,
+      roomID: h.randomHex(),
+      users: []
+    });
+
+    newChatRoom.save(function(error) {
+      if (error) {
+        // console.log("Create New User Error");
+        reject(error);
+      } else {
+        resolve(newChatRoom);
+      }
+    })
+  })
+}
+// Find a single room based on a key
+let findRoom = function(roomID) {
+  return db.roomModel.findOne({
+    'roomID': roomID
+  });
+}
+// return all rooms
+let getAllRooms = function() {
+  return new Promise(function(resolve, reject) {
+    db.roomModel.find(function (error, results) {
+      // assert.equal(null, err);
+      if (error)
+        return reject(error);
+      //invoke callback with your mongoose returned result
+      else
+        return reject(results);
+    })
+  });
+}
+// 
+// let updateRooms = function
+
 module.exports = {
   route,
-  findOne,
+  findUser,
   createNewUser,
-  findById,
+  findUserById,
   isAuthenticated,
   findRoomByName,
   randomHex,
   findRoomById,
   addUserToRoom,
-  removeUserFromRoom
+  removeUserFromRoom,
+  createNewRoom,
+  findRoom,
+  getAllRooms
 }

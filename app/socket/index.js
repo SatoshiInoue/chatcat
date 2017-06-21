@@ -14,16 +14,23 @@
        // Check to see if a room with the same title exists  or newRoomInput
        // if not, create one and broadcast to everyone
        if (!h.findRoomByName(allrooms, newRoomInput)) {
-         allrooms.push({
-           room: newRoomInput,
-           roomID: h.randomHex(),
-           users: []
-         });
+        //  allrooms.push({
+        //    room: newRoomInput,
+        //    roomID: h.randomHex(),
+        //    users: []
+        //  });
+        let newChatRoom = h.createNewRoom(newRoomInput)
+        .then(function(room) {
+          allrooms.push(room);
 
-         // Emit an updated list to the creator
-         socket.emit('chatRoomsList', JSON.stringify(allrooms));
-         // Emit an updated list to everyone connected to the rooms page
-         socket.broadcast.emit('chatRoomsList', JSON.stringify(allrooms));
+          // Emit an updated list to the creator
+          socket.emit('chatRoomsList', JSON.stringify(allrooms));
+          // Emit an updated list to everyone connected to the rooms page
+          socket.broadcast.emit('chatRoomsList', JSON.stringify(allrooms));
+        })
+        .catch(function(error) {
+          logger.log('error', "Error - createNewRoom " + error);
+        });
        }
      });
    });

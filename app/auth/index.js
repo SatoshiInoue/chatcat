@@ -12,7 +12,7 @@ module.exports = () => {
 
   passport.deserializeUser((id, done) => {
     // Find the user using the _id
-    h.findById(id)
+    h.findUserById(id)
       .then(user => done(null, user))
       .catch(error => logger.log('error', "Error when deserializing"+error));
   });
@@ -21,7 +21,7 @@ module.exports = () => {
     //Find a user in the local db using profile.id
     //If the user is found, return the user data using the done()
     //If the user is not found, create one in the local db and return
-    h.findOne(profile.id)
+    h.findUser(profile.id)
       .then(function(result) {
         if (result) {
           done(null, result);
