@@ -2,7 +2,18 @@
  const h = require('../helpers');
 
  module.exports = (io, app) => {
-   let allrooms = app.locals.chatrooms;
+  //  let allrooms = app.locals.chatrooms;
+
+   let allrooms;
+   h.getAllRooms()
+   .then(function(results) {
+     allrooms = results;
+     app.locals.chatrooms = allrooms;
+   })
+   .catch(function(error) {
+     allrooms = [];
+     logger.log('error', "Error - getAllRooms " + error);
+   });
 
    io.of('/roomslist').on('connection', socket => {
      console.log('Scoket.io Connected');

@@ -27,7 +27,7 @@ app.use('/', chatCat.router);
 
 app.get('/dashboard', (req, res, next) => {
   res.send('<h1> This is the dashboard page! '+ req.hello + '</h1>');
-})
+});
 
 chatCat.ioServer(app).listen(app.get('port'), function() {
   console.log('ChatCat Running on Port: ', 3000);

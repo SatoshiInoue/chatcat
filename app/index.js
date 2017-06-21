@@ -8,19 +8,19 @@ const h = require('./helpers');
 const logger = require('./logger');
 
 require('./auth')();
-let chatrooms;
-h.getAllRooms()
-.then(function(results) {
-  chatrooms = results;
-})
-.catch(function(error) {
-  chatrooms = [];
-  logger.log('error', "Error - getAllRooms " + error);
-});
+// let chatrooms;
+// h.getAllRooms()
+// .then(function(results) {
+//   chatrooms = results;
+// })
+// .catch(function(error) {
+//   chatrooms = [];
+//   logger.log('error', "Error - getAllRooms " + error);
+// });
 
 // Create an IO Server instanceof
 let ioServer = (app) => {
-  app.locals.chatrooms = chatrooms;
+  app.locals.chatrooms = [];
 
   const server = require('http').Server(app);
   const io = require('socket.io')(server);
