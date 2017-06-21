@@ -17,7 +17,7 @@
    });
 
    io.of('/roomslist').on('connection', socket => {
-     console.log('Scoket.io Connected');
+     console.log('Socket.io Connected');
      socket.on('getChatrooms', () => {
        socket.emit('chatRoomsList', JSON.stringify(allrooms));
      });
@@ -43,7 +43,7 @@
           socket.broadcast.emit('chatRoomsList', JSON.stringify(allrooms));
         })
         .catch(function(error) {
-          logger.log('error', "Error - createNewRoom " + error);
+          console.log("Error - createNewRoom " + error);
         });
        }
      });
