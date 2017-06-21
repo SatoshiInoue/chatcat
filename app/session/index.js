@@ -5,7 +5,7 @@ const config = require('../config');
 const db = require('../db');
 
 if (process.env.NODE_ENV === 'production') {
-  modeule.exports = session({
+  module.exports = session({
     secret: config.sessionSecret,
     resave: false,
     saveUninitialized: false,
