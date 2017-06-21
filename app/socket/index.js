@@ -8,11 +8,12 @@
    h.getAllRooms()
    .then(function(results) {
      allrooms = results;
+     console.log("all rooms found");
      app.locals.chatrooms = allrooms;
    })
    .catch(function(error) {
      allrooms = [];
-     logger.log('error', "Error - getAllRooms " + error);
+     console.log("Error - getAllRooms " + error);
    });
 
    io.of('/roomslist').on('connection', socket => {
