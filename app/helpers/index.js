@@ -193,7 +193,7 @@ let getAllRooms = function() {
         return reject(error);
       //invoke callback with your mongoose returned result
       else
-        return reject(results);
+        return resolve(results);
     })
   });
 }
